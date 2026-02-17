@@ -55,24 +55,13 @@ export const Scene1_Hook: React.FC<Scene1Props> = ({
     return (
         <AbsoluteFill
             style={{
-                background:
-                    "linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)",
                 justifyContent: "center",
                 alignItems: "center",
                 fontFamily:
                     '"Hiragino Kaku Gothic ProN", "Noto Sans JP", system-ui, sans-serif',
             }}
         >
-            {/* Diagonal stripes overlay */}
-            <div
-                style={{
-                    position: "absolute",
-                    inset: 0,
-                    background:
-                        "repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(0,0,0,0.08) 40px, rgba(0,0,0,0.08) 80px)",
-                    pointerEvents: "none",
-                }}
-            />
+            {/* Removed Diagonal stripes overlay */}
 
             {/* Main: "急募" */}
             <div

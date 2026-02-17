@@ -51,8 +51,6 @@ export const Scene5_RiskReversal: React.FC<Scene5Props> = ({
     return (
         <AbsoluteFill
             style={{
-                background:
-                    "linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)",
                 justifyContent: "center",
                 alignItems: "center",
                 padding: "0 55px",

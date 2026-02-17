@@ -62,8 +62,6 @@ export const Scene3_2_Offer: React.FC<Scene3_2Props> = ({
     return (
         <AbsoluteFill
             style={{
-                background:
-                    "linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)",
                 justifyContent: "center",
                 alignItems: "center",
                 padding: "0 50px",

@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Sequence } from "remotion";
+import { AbsoluteFill, Sequence, Video, staticFile } from "remotion";
 import { z } from "zod";
 import { Scene1_Hook } from "./Scene1_Hook";
 import { Scene2_Problem } from "./Scene2_Problem";
@@ -84,15 +84,18 @@ export type MetaAdProps = z.infer<typeof metaAdSchema>;
 // ========================================
 // Scene Timeline
 // ========================================
+// ========================================
+// Scene Timeline
+// ========================================
 const SCENES = {
-    hook: { from: 0, duration: 90 },  // 0s - 3s
-    problem: { from: 90, duration: 90 },  // 3s - 6s
-    offer1: { from: 180, duration: 40 },  // 6s - 7.3s
-    offer2: { from: 220, duration: 40 },  // 7.3s - 8.7s
-    offer3: { from: 260, duration: 75 },  // 8.7s - 11.2s (2.5s)
-    benefit: { from: 335, duration: 140 },  // 11.2s - 15.8s
-    riskReversal: { from: 475, duration: 120 },  // 15.8s - 19.8s
-    cta: { from: 595, duration: 150 },  // 19.8s - 24.8s
+    hook: { from: 0, duration: 66 },  // 0s - 2.2s
+    problem: { from: 66, duration: 42 },  // 2.2s - 3.6s
+    offer1: { from: 108, duration: 42 },  // 3.6s - 5.0s
+    offer2: { from: 150, duration: 36 },  // 5.0s - 6.2s
+    offer3: { from: 186, duration: 60 },  // 6.2s - 8.2s (2.0s)
+    benefit: { from: 246, duration: 72 }, // 8.2s - 10.6s
+    riskReversal: { from: 318, duration: 114 }, // 10.6s - 14.4s
+    cta: { from: 432, duration: 150 }, // 14.4s - 19.4s
 } as const;
 
 // ========================================
@@ -110,6 +113,54 @@ export const MetaAdMain: React.FC<MetaAdProps> = ({
 }) => {
     return (
         <AbsoluteFill style={{ backgroundColor: "#000000" }}>
+            {/* Background Videos for all scenes */}
+            <Sequence from={SCENES.hook.from} durationInFrames={SCENES.hook.duration}>
+                <Video src={staticFile("192a-18-23_elements-group/scene1.mov")} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            </Sequence>
+            <Sequence from={SCENES.problem.from} durationInFrames={SCENES.problem.duration}>
+                <Video src={staticFile("192a-18-23_elements-group/scene2.MOV")} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            </Sequence>
+
+            {/* Scene 3 Sub-parts Backgrounds */}
+            <Sequence from={SCENES.offer1.from} durationInFrames={SCENES.offer1.duration}>
+                <Video src={staticFile("192a-18-23_elements-group/scene3-1.MOV")} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            </Sequence>
+            <Sequence from={SCENES.offer2.from} durationInFrames={SCENES.offer2.duration}>
+                <AbsoluteFill>
+                    <Video
+                        src={staticFile("192a-18-23_elements-group/scene3-2.mov")}
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    />
+                    {/* Dark overlay for text visibility */}
+                    <AbsoluteFill style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }} />
+                </AbsoluteFill>
+            </Sequence>
+
+            {/* Scene 3-3 (6.2s-8.2s): No Background as per previous instruction for this segment */}
+
+            <Sequence from={SCENES.benefit.from} durationInFrames={SCENES.benefit.duration}>
+                <Video src={staticFile("192a-18-23_elements-group/scene4.MOV")} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            </Sequence>
+
+            {/* Scene 5 Split Backgrounds */}
+            <Sequence from={SCENES.riskReversal.from} durationInFrames={60}>
+                <Video src={staticFile("192a-18-23_elements-group/scene5-1.mov")} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            </Sequence>
+            <Sequence from={SCENES.riskReversal.from + 60} durationInFrames={54}>
+                <Video src={staticFile("192a-18-23_elements-group/scene5-2.mov")} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            </Sequence>
+
+            <Sequence from={SCENES.cta.from} durationInFrames={SCENES.cta.duration}>
+                <AbsoluteFill>
+                    <Video
+                        src={staticFile("192a-18-23_elements-group/scene6.MP4")}
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    />
+                    {/* Dark overlay for text visibility */}
+                    <AbsoluteFill style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }} />
+                </AbsoluteFill>
+            </Sequence>
+
             {/* Safe Zone wrapper: top 15%, bottom 20% for Instagram Reels UI */}
             <AbsoluteFill
                 style={{

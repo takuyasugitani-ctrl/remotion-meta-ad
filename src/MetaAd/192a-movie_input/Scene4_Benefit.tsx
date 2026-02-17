@@ -59,8 +59,6 @@ export const Scene4_Benefit: React.FC<Scene4Props> = ({
     return (
         <AbsoluteFill
             style={{
-                background:
-                    "linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)",
                 justifyContent: "center",
                 alignItems: "center",
                 padding: "0 40px",

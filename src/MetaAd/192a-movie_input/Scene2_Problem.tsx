@@ -84,11 +84,8 @@ export const Scene2_Problem: React.FC<Scene2Props> = ({
     return (
         <AbsoluteFill
             style={{
-                background:
-                    "linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)",
                 justifyContent: "center",
                 alignItems: "center",
-                padding: "0 60px",
                 fontFamily:
                     '"Hiragino Kaku Gothic ProN", "Noto Sans JP", system-ui, sans-serif',
             }}
